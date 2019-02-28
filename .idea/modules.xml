@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/grapheign.iml" filepath="$PROJECT_DIR$/grapheign.iml" />
+      <module fileurl="file://$PROJECT_DIR$/grapheign-core/grapheign-core.iml" filepath="$PROJECT_DIR$/grapheign-core/grapheign-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/grapheign-examples/grapheign-examples.iml" filepath="$PROJECT_DIR$/grapheign-examples/grapheign-examples.iml" />
+    </modules>
+  </component>
+</project>

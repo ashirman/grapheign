@@ -11,6 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="grapheign" target="1.5" />
       <module name="grapheign-core" target="1.5" />
       <module name="grapheign-examples" target="1.5" />
     </bytecodeTargetLevel>
