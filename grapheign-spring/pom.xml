@@ -13,6 +13,10 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.grapheign</groupId>
             <artifactId>grapheign-core</artifactId>
             <version>${project.version}</version>
