@@ -62,10 +62,10 @@ fabric.properties
 .idea/httpRequests
 *.iml
 
-/.idea/.name
+#/.idea/.name
 /.idea/modules.xml
 /.idea/vcs.xml
 /.idea/checkstyle-idea.xml
-/.idea/encodings.xml
+#/.idea/encodings.xml
 /.idea/compiler.xml
-/.idea/misc.xml
+#/.idea/misc.xml
