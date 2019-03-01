@@ -6,15 +6,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class DataFetchingEnvMethodArgsExtractorImplTest {
@@ -63,17 +63,3 @@ class DataFetchingEnvMethodArgsExtractorImplTest {
     }
 }
 
-class TestClass {
-    public Object noArgsMethod() {
-        return new Object();
-    }
-
-    public Object singlePrimitiveParm(String reallySimpleParm) {
-        return new Object();
-    }
-
-    public Object fewSimplePArmsOfTheSameType(String stringParm1, String stringParm2 ) {
-        return new Object();
-    }
-
-}
