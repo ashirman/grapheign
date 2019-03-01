@@ -12,12 +12,14 @@
     <modules>
         <module>grapheign-core</module>
         <module>grapheign-examples</module>
+        <module>grapheign-spring</module>
     </modules>
 
     <properties>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
 
+        <spring.version>5.1.5.RELEASE</spring.version>
         <graphql.java.version>11.0</graphql.java.version>
         <mockito.version>2.24.5</mockito.version>
         <jupiter.version>5.3.1</jupiter.version>
@@ -26,6 +28,14 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <version>${spring.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
             <dependency>
                 <groupId>com.graphql-java</groupId>
                 <artifactId>graphql-java</artifactId>

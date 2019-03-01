@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/grapheign.iml" filepath="$PROJECT_DIR$/grapheign.iml" />
       <module fileurl="file://$PROJECT_DIR$/grapheign-core/grapheign-core.iml" filepath="$PROJECT_DIR$/grapheign-core/grapheign-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/grapheign-examples/grapheign-examples.iml" filepath="$PROJECT_DIR$/grapheign-examples/grapheign-examples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/grapheign-spring/grapheign-spring.iml" filepath="$PROJECT_DIR$/grapheign-spring/grapheign-spring.iml" />
     </modules>
   </component>
 </project>
