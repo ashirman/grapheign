@@ -11,7 +11,7 @@ import graphql.servlet.GraphQLHttpServlet;
 
 import javax.servlet.annotation.WebServlet;
 
-@WebServlet
+@WebServlet(name = "HelloServlet", urlPatterns = {"graphql"}, loadOnStartup = 1)
 public class GraphqlServlet extends GraphQLHttpServlet {
     @Override
     protected GraphQLConfiguration getConfiguration() {
