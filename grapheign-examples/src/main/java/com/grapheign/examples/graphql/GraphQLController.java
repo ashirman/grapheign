@@ -1,4 +1,4 @@
-package com.grapheign.examples;
+package com.grapheign.examples.graphql;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-@RestController
+//@RestController
 public class GraphQLController {
     private final GraphQL graphql;
     private final ObjectMapper objectMapper;

@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Human implements Character {
+    private String _type;
     private String id;
     private String name;
     private List<Character> friends = new ArrayList<>();
@@ -16,6 +17,7 @@ public class Human implements Character {
         this.name = name;
         this.appearsIn = appearsIn;
         this.homePlanet = homePlanet;
+        this._type = "human";
     }
 
     public void addFriends(Character ... friends) {

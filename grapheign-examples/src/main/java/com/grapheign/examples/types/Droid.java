@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Droid implements Character {
+    private String _type;
     private String id;
     private String name;
     private List<Character> friends = new ArrayList<>();
@@ -16,6 +17,7 @@ public class Droid implements Character {
         this.name = name;
         this.appearsIn = appearsIn;
         this.primaryFunction = primaryFunction;
+        this._type = "droid";
     }
 
     public void addFriends(Character ... friends) {

@@ -30,6 +30,7 @@ public class CharacterRepository {
         Droid c3po = new Droid("2000", "C-3PO", Arrays.asList(Episode.NEWHOPE, Episode.JEDI, Episode.EMPIRE), "Protocol");
         Droid aretoo = new Droid("2001", "R2-D2", Arrays.asList(Episode.NEWHOPE, Episode.JEDI, Episode.EMPIRE), "Astromech");
 
+/*
         lukeSkywalker.addFriends(hanSolo, leiaOrgana, c3po, aretoo);
         darthVader.addFriends(wilhuffTarkin);
         hanSolo.addFriends(lukeSkywalker, leiaOrgana, aretoo);
@@ -38,6 +39,7 @@ public class CharacterRepository {
 
         c3po.addFriends(lukeSkywalker, hanSolo, leiaOrgana, aretoo);
         aretoo.addFriends(lukeSkywalker, hanSolo, leiaOrgana);
+*/
 
         this.characters = Collections.unmodifiableMap(Stream.of(lukeSkywalker, darthVader, hanSolo, leiaOrgana, wilhuffTarkin, c3po, aretoo)
             .collect(Collectors.toMap(Character::getId, Function.identity())));

@@ -1,4 +1,4 @@
-package com.grapheign.examples;
+package com.grapheign.examples.graphql;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
@@ -17,7 +17,7 @@ import java.io.IOException;
 import static com.google.common.io.Resources.getResource;
 import static graphql.schema.idl.TypeRuntimeWiring.newTypeWiring;
 
-@Component
+//@Component
 public class GraphQLProvider {
 
     private GraphQL graphQL;
