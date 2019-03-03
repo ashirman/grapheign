@@ -11,4 +11,5 @@ import java.lang.annotation.Target;
 @Documented
 @GrapheignType(type = "Mutation")
 public @interface GrapheignMutation {
+    String type() default "Mutation";
 }

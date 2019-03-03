@@ -14,4 +14,5 @@ import java.lang.annotation.Target;
 @Documented
 @GrapheignType(type = "Query")
 public @interface GrapheignQuery {
+    String type() default "Query";
 }
