@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 import graphql.schema.DataFetcher;
 import graphql.schema.DataFetchingEnvironment;
 
-class MethodInvocationDataFetcher implements DataFetcher {
+public class MethodInvocationDataFetcher implements DataFetcher {
     private final DataFetchingEnvMethodArgsExtractor argsExtractor;
     private final Method method;
     private final Object object;
