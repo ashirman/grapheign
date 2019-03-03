@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-//@RestController
+@RestController
 public class GraphQLController {
     private final GraphQL graphql;
     private final ObjectMapper objectMapper;
