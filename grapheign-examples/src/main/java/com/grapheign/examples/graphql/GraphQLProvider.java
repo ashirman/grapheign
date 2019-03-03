@@ -3,10 +3,12 @@ package com.grapheign.examples.graphql;
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
 import com.grapheign.core.GraphqlTypeFetcherSupplier;
-import com.grapheign.examples.FeignGraphqlTypeFetcherSupplier;
+import com.grapheign.examples.types.Droid;
+import com.grapheign.examples.types.Human;
 import graphql.GraphQL;
 import graphql.schema.DataFetcher;
 import graphql.schema.GraphQLSchema;
+import graphql.schema.TypeResolver;
 import graphql.schema.idl.RuntimeWiring;
 import graphql.schema.idl.RuntimeWiring.Builder;
 import graphql.schema.idl.SchemaGenerator;
@@ -14,7 +16,6 @@ import graphql.schema.idl.SchemaParser;
 import graphql.schema.idl.TypeDefinitionRegistry;
 import graphql.schema.idl.TypeRuntimeWiring;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
@@ -51,13 +52,38 @@ public class GraphQLProvider {
     }
 
     private RuntimeWiring buildWiring() {
-        Builder wiring = RuntimeWiring.newRuntimeWiring();
+        Builder wiring = RuntimeWiring.newRuntimeWiring()
+                .type("Human", typeWiring -> typeWiring
+                        //.dataFetcher("friends", StarWarsData.getFriendsDataFetcher())
+                )
+                // you can use builder syntax if you don't like the lambda syntax
+                .type("Droid", typeWiring -> typeWiring
+                        //.dataFetcher("friends", StarWarsData.getFriendsDataFetcher())
+                )
+                // or full builder syntax if that takes your fancy
+                .type(
+                        newTypeWiring("Character")
+                                .typeResolver(characterTypeResolver())
+                                .build()
+                );
 
         graphqlTypeFetcherSupplier.get().forEach((type, fieldDataFetchers) -> wiring.type(typeRuntimeWiring(type, fieldDataFetchers)));
 
-        //wiring.type(newTypeWiring("Character").typeResolver((env) -> env.))
 
         return wiring.build();
+    }
+
+    private TypeResolver characterTypeResolver() {
+        return env -> {
+            Object javaObject = env.getObject();
+            if (javaObject instanceof Human) {
+                return env.getSchema().getObjectType("Human");
+            } else if (javaObject instanceof Droid) {
+                return env.getSchema().getObjectType("Droid");
+            } else {
+                return env.getSchema().getObjectType("unknown?");
+            }
+        };
     }
 
     private TypeRuntimeWiring typeRuntimeWiring(String typename, Collection<Entry<String, DataFetcher>> fieldsDataFetchers) {

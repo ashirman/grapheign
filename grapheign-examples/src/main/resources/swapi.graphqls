@@ -1,12 +1,12 @@
 type Query {
     # If episode omitted, returns the hero of the whole saga. If provided, returns the hero of that particular episode
-    #hero(episode: Episode): Character
+    hero(episode: Episode): Character
     # Find human by id
     human(id: String!): Human
     # Find droid by id
     droid(id: String!): Droid
     # Find character by id
-    #character(id: String!): Character
+    character(id: String!): Character
 }
 
 # One of the films in the Star Wars Trilogy
@@ -20,20 +20,19 @@ enum Episode {
 }
 
 # A character in the Star Wars Trilogy
-#interface Character {
+interface Character {
     # The id of the character
-#    id: String!
+    id: String!
     # The name of the character
-#    name: String
+    name: String
     # The friends of the character, or an empty list if they have none
-#    friends: [Character]
+    #friends: [Character]
     # Which movies they appear in
-#    appearsIn: [Episode]
-#}
+    appearsIn: [Episode]
+}
 
 # A humanoid creature in the Star Wars universe
-type Human {
-#implements Character {
+type Human implements Character {
     # The id of the human
     id: String!
     # The name of the human
@@ -47,8 +46,7 @@ type Human {
 }
 
 # A mechanical creature in the Star Wars universe
-type Droid {
-#implements Character {
+type Droid implements Character {
     # The id of the droid
     id: String!
     # The name of the droid
