@@ -37,7 +37,7 @@ public class GrapheignAnnotationUtils {
         return name;
     }
 
-    public static boolean grapheignMethods(Method method) {
+    public static boolean isGrapheignMethods(Method method) {
         return method.getDeclaredAnnotation(GrapheignField.class) != null;
     }
 
@@ -50,6 +50,4 @@ public class GrapheignAnnotationUtils {
         return stream(AopProxyUtils.proxiedUserInterfaces(v))
                 .anyMatch(GrapheignAnnotationUtils::hasGrapheignTypeAnnotation);
     }
-
-
 }

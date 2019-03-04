@@ -64,7 +64,7 @@ public class FeignGraphqlTypeFetcherSupplier implements GraphqlTypeFetcherSuppli
     private Entry<String, Collection<Entry<String, DataFetcher>>> toDataFetcher(Class<?> c, Object grapheignBean) {
 
         Collection<Entry<String, DataFetcher>> dataFetchers = stream(c.getMethods())
-                .filter(GrapheignAnnotationUtils::grapheignMethods)
+                .filter(GrapheignAnnotationUtils::isGrapheignMethods)
                 .map(m -> new DataFetchersEntry<String, DataFetcher>(getGrapheignFieldName(m),
                         new MethodInvocationDataFetcher(m, grapheignBean, argsExtractor)))
                 .collect(toSet());
