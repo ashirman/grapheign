@@ -1,6 +1,7 @@
 package com.grapheign.examples;
 
 import com.grapheign.core.GraphqlTypeFetcherSupplier;
+import com.grapheign.spring.FeignGraphqlTypeFetcherSupplier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
