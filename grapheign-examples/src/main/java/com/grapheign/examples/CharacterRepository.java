@@ -1,6 +1,7 @@
 package com.grapheign.examples;
 
 import com.grapheign.examples.types.Character;
+import com.grapheign.examples.types.CreateHumanInput;
 import com.grapheign.examples.types.Droid;
 import com.grapheign.examples.types.Episode;
 import com.grapheign.examples.types.Human;
@@ -10,6 +11,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -17,11 +20,11 @@ import java.util.stream.Stream;
 @Component
 public class CharacterRepository {
 
-    private Map<String, Character> characters;
+    private SortedMap<String, Character> characters;
     private Map<Episode, Character> heroes;
 
     public CharacterRepository() {
-        Human lukeSkywalker = new Human("1000", "Luke Skywalker", Arrays.asList(Episode.NEWHOPE, Episode.JEDI, Episode.EMPIRE),"Tatooine");
+        Human lukeSkywalker = new Human("1000", "Luke Skywalker", Arrays.asList(Episode.NEWHOPE, Episode.JEDI, Episode.EMPIRE), "Tatooine");
         Human darthVader = new Human("1001", "Darth Vader", Arrays.asList(Episode.NEWHOPE, Episode.JEDI, Episode.EMPIRE), "Tatooine");
         Human hanSolo = new Human("1002", "Han Solo", Arrays.asList(Episode.NEWHOPE, Episode.JEDI, Episode.EMPIRE), null);
         Human leiaOrgana = new Human("1003", "Leia Organa", Arrays.asList(Episode.NEWHOPE, Episode.JEDI, Episode.EMPIRE), "Alderaan");
@@ -41,8 +44,8 @@ public class CharacterRepository {
         aretoo.addFriends(lukeSkywalker, hanSolo, leiaOrgana);
 */
 
-        this.characters = Collections.unmodifiableMap(Stream.of(lukeSkywalker, darthVader, hanSolo, leiaOrgana, wilhuffTarkin, c3po, aretoo)
-            .collect(Collectors.toMap(Character::getId, Function.identity())));
+        this.characters = Collections.synchronizedSortedMap(Stream.of(lukeSkywalker, darthVader, hanSolo, leiaOrgana, wilhuffTarkin, c3po, aretoo)
+                .collect(Collectors.toMap(Character::getId, Function.identity(), (c1, c2) -> c1, TreeMap::new)));
 
         Map<Episode, Character> heroes = new HashMap<>();
         heroes.put(Episode.NEWHOPE, lukeSkywalker);
@@ -56,7 +59,16 @@ public class CharacterRepository {
         return characters;
     }
 
+    public Human addHuman(CreateHumanInput humanInput) {
+        synchronized (characters) {
+            Long id = Long.valueOf(characters.lastKey()) + 1;
+            Human human = new Human(id.toString(), humanInput.getName(), Collections.emptyList(), humanInput.getHomePlanet());
+            characters.put(id.toString(), human);
+            return human;
+        }
+    }
+
     public Map<Episode, Character> getHeroes() {
-        return heroes;
+        return Collections.unmodifiableMap(heroes);
     }
 }

@@ -1,6 +1,7 @@
 package com.grapheign.examples.restapi;
 
 import com.grapheign.examples.CharacterRepository;
+import com.grapheign.examples.types.CreateHumanInput;
 import com.grapheign.examples.types.Droid;
 import com.grapheign.examples.types.Episode;
 import com.grapheign.examples.types.Human;
@@ -8,6 +9,8 @@ import com.grapheign.examples.types.Character;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -44,5 +47,10 @@ public class StarWarController {
     @GetMapping("/character/{id}")
     public Character character(@PathVariable("id") String id) {
         return characterRepository.getCharacters().get(id);
+    }
+
+    @PostMapping("/createHuman")
+    public Human createHuman(@RequestBody CreateHumanInput createHumanInput) {
+        return characterRepository.addHuman(createHumanInput);
     }
 }

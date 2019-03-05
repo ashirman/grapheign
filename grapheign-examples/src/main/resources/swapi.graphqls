@@ -59,14 +59,14 @@ type Droid implements Character {
     primaryFunction: String
 }
 
-#type Mutation {
+type Mutation {
     # Creates a new human character
-#    createHuman(input: CreateHumanInput!): Human
-#}
+    createHuman(input: CreateHumanInput!): Human
+}
 
-#input CreateHumanInput {
+input CreateHumanInput {
     # The name of the human
-#    name: String
+    name: String
     # The home planet of the human, or null if unknown
-#    homePlanet: String
-#}
+    homePlanet: String
+}

@@ -12,6 +12,8 @@ import static org.springframework.core.annotation.AnnotationUtils.findAnnotation
 
 public class GrapheignAnnotationUtils {
 
+    //currently one graphql interface can handle either @GrapheignQuery or @GrapheignMutation but not both.
+    //TODO add multiannotation support
     public static String getGrapheignTypeName(Class<?> c) {
         GrapheignQuery query = c.getAnnotation(GrapheignQuery.class);
         if (query != null) {
